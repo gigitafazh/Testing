@@ -84,18 +84,10 @@
 								<td class="col-sm-4"><input class="form-control"
 									type="text" name="nama_kecamatan" th:field="*{nama_kecamatan}"/></td>
 							</tr>
-							<!-- <tr>
-								<td class="col-sm-2"><label for="kota">Kota</label></td>
-								<td class="col-sm-4"><input class="form-control"
-									type="text" name="kota" /></td>
-							</tr> -->
-							<tr>
+								<tr>
 								<td class="col-sm-2"><label for="nama_kota">Kota</label></td>
-								<td class="col-sm-4"><select class="form-control"
-									name="nama_kota" th:value="*{kota.nama_kota}" required="true">
-										<option selected="true" disabled="disabled" value=""></option>
-										<option th:each="${kota.nama_kota}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}"></option>
-								</select></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="nama_kota" th:field="*{nama_kota}"/></td>
 							</tr>
 							<tr>
 								<td class="col-sm-2"></td>

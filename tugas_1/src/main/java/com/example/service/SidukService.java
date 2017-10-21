@@ -42,19 +42,24 @@ public interface SidukService {
 	// select view anggota keluarga penduduk di keluarga
 	List<PendudukModel> selectPendudukById(int id_keluarga);
 	
+	// select kode by nama
+	KelurahanModel getNamaKelurahan(String nama_kelurahan);
+	KecamatanModel getNamaKecamatan(String nama_kecamatan);
+	KotaModel getNamaKota(String nama_kota);
+	
+	// select nkk untuk di cek
+	String getCekNKK(String nkkbaru);
+	
+	// select kode kelurahan untuk set id kelurahan
+	int getKodeKelurahan(String kode_kelurahan);
+	
 	// add keluarga
 	void addKeluarga(KeluargaModel keluarga);
 	
 	// update keluarga
 	void updateKeluarga(KeluargaModel keluarga);
 
-	KelurahanModel getNamaKelurahan(String nama_kelurahan);
+	
 
-	KecamatanModel getNamaKecamatan(String nama_kecamatan);
-
-	KotaModel getNamaKota(String nama_kota);
-
-	String getCekNKK(String nkkbaru);
-
-	int getKodeKelurahan(String kode_kelurahan);
+	
 }

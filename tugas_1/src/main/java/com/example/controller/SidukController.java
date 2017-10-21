@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.model.PendudukModel;
 import com.example.model.KeluargaModel;
 import com.example.model.KelurahanModel;
-import com.example.model.AlamatModel;
 import com.example.model.KecamatanModel;
 import com.example.model.KotaModel;
 import com.example.service.SidukService;
@@ -137,7 +136,8 @@ public class SidukController {
 
 	// halaman add keluarga
 	@RequestMapping("/keluarga/add")
-	public String add() {
+	public String add(Model model) {
+		model.addAttribute("keluarga", new KeluargaModel());
 		return "form-keluarga";
 	}
 
@@ -164,11 +164,11 @@ public class SidukController {
 		String kode_kelurahan = kodekelurahan.getKode_kelurahan();
 		
 		if (kode_kelurahan != null && kode_kecamatan != null && kode_kota != null) {
-			LocalDate localDate = LocalDate.now();
-			String tanggal = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(localDate);
+			LocalDate tanggal = LocalDate.now();
+			String tgl = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(tanggal);
 
-			String tanggal_rilis = tanggal.substring(8, 10) + tanggal.substring(5, 7) + tanggal.substring(2, 4);
-			String nkkbaru = kode_kecamatan.substring(0, kode_kecamatan.length() - 1) + tanggal_rilis;
+			String tglterbit = tgl.substring(8, 10) + tgl.substring(5, 7) + tgl.substring(2, 4);
+			String nkkbaru = kode_kecamatan.substring(0, kode_kecamatan.length() - 1) + tglterbit;
 
 			String ceknkk = sidukDAO.getCekNKK(nkkbaru);
 			Long nkk = Long.parseLong(nkkbaru + "0001");
@@ -180,7 +180,7 @@ public class SidukController {
 			keluarga.setNomor_kk(nkk_keluarga);
 			keluarga.setId_kelurahan(sidukDAO.getKodeKelurahan(kode_kelurahan));
 
-			model.addAttribute("nkk_tambah", nkk_keluarga);
+			model.addAttribute("nomor_kk", nkk_keluarga);
 			sidukDAO.addKeluarga(keluarga);
 			return "success-keluarga";
 		} else {

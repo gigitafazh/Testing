@@ -37,11 +37,11 @@ public interface SidukMapper {
 	// select view penduduk get data di keluarga, kelurahan, kecamatan, kota
 	@Select("select * from kota where id = #{id_kota}")
 	KotaModel selectKotaById(int id_kota);
-	
+
 	// select nik untuk di cek
 	@Select("select max(nik) from penduduk WHERE nik like concat(#{ceknik},'%')")
 	String getCekNIK(String ceknik);
-	
+
 	// add penduduk
 	@Insert("insert into penduduk (nik, nama, tempat_lahir, tanggal_lahir, jenis_kelamin, is_wni, id_keluarga,"
 			+ "agama, pekerjaan, status_perkawinan, status_dalam_keluarga, golongan_darah, is_wafat)"
@@ -57,7 +57,7 @@ public interface SidukMapper {
 			+ "status_perkawinan = #{status_perkawinan}, status_dalam_keluarga =#{status_dalam_keluarga},"
 			+ "golongan_darah = #{golongan_darah}, is_wafat = #{is_wafat} where nik = #{nik}")
 	void updatePenduduk(PendudukModel penduduk);
-	
+
 	// Mapper Keluarga
 	// select view keluarga
 	@Select("select * from keluarga where nomor_kk = #{nomor_kk}")
@@ -67,20 +67,32 @@ public interface SidukMapper {
 	@Select("select * from penduduk where id_keluarga = #{id}")
 	List<PendudukModel> selectPendudukById(int id_keluarga);
 
+	// select kode kl kc kt
+	@Select("select kode_kelurahan from kelurahan where nama_kelurahan=#{nama_kelurahan}")
+	KelurahanModel getNamaKelurahan(@Param("nama_kelurahan") String nama_kelurahan);
+	
+	@Select("select kode_kecamatan from kecamatan where nama_kecamatan=#{nama_kecamatan}")
+	KecamatanModel getNamaKecamatan(@Param("nama_kecamatan") String nama_kecamatan);
+	
+	@Select("select kode_kota from kota where nama_kota=#{nama_kota}")
+	KotaModel getNamaKota(@Param("nama_kota") String nama_kota);
+
+	// select nkk untuk di cek
+	@Select("select max(nomor_kk) from keluarga where nomor_kk like concat(#{ceknkk},'%')")
+	String getCekNKK(String ceknkk);
+
+	// select kode kelurahan untuk set id kelurahan
+	@Select("select id from kelurahan where kode_kelurahan = #{kode_kelurahan}")
+	int getKodeKelurahan(String kode_kelurahan);
+
 	// add keluarga
 	@Insert("insert into keluarga (nomor_kk, alamat, RT, RW, id_kelurahan, is_tidak_berlaku) values"
 			+ "('${nomor_kk}', '${alamat}', '${RT}', '${RW}', ${id_kelurahan}, ${is_tidak_berlaku})")
 	void addKeluarga(KeluargaModel keluarga);
-	
+
 	// update keluarga
 	@Update("update keluarga set nomor_kk = #{nomor_kk}, alamat = #{alamat},"
 			+ "RT = #{RT}, RW = #{RW}, id_kelurahan = #{id_kelurahan},"
 			+ "is_tidak_berlaku = #{is_tidak_berlaku} where nomor_kk = #{nomor_kk}")
 	void updateKeluarga(KeluargaModel keluarga);
-
-	KelurahanModel getNamaKelurahan(String nama_kelurahan);
-
-	KecamatanModel getNamaKecamatan(String nama_kecamatan);
-
-	KotaModel getNamaKota(String nama_kota);
 }

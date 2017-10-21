@@ -55,12 +55,12 @@ public class SidukServiceDatabase implements SidukService {
 		log.info("select kota with id {}", id_kota);
 		return sidukMapper.selectKotaById(id_kota);
 	}
-	
+
 	// method select nik untuk di cek
 	public String getCekNIK(String ceknik) {
 		return sidukMapper.getCekNIK(ceknik);
 	}
-	
+
 	// method add penduduk
 	@Override
 	public void addPenduduk(PendudukModel penduduk) {
@@ -91,43 +91,44 @@ public class SidukServiceDatabase implements SidukService {
 		log.info("select penduduk with id_keluarga {}", id_keluarga);
 		return sidukMapper.selectPendudukById(id_keluarga);
 	}
-	
+
 	// method add keluarga
 	@Override
 	public void addKeluarga(KeluargaModel keluarga) {
 		sidukMapper.addKeluarga(keluarga);
 	}
-	
+
 	// method update keluarga
 	@Override
 	public void updateKeluarga(KeluargaModel keluarga) {
 		sidukMapper.updateKeluarga(keluarga);
 	}
 
+	// method select kode by nama
 	@Override
 	public KelurahanModel getNamaKelurahan(String nama_kelurahan) {
 		return sidukMapper.getNamaKelurahan(nama_kelurahan);
 	}
 
+	// method select kode by nama
 	@Override
 	public KecamatanModel getNamaKecamatan(String nama_kecamatan) {
 		return sidukMapper.getNamaKecamatan(nama_kecamatan);
 	}
 
+	// method select kode by nama
 	@Override
 	public KotaModel getNamaKota(String nama_kota) {
 		return sidukMapper.getNamaKota(nama_kota);
 	}
 
 	@Override
-	public String getCekNKK(String nkkbaru) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getCekNKK(String ceknkk) {
+		return sidukMapper.getCekNKK(ceknkk);
 	}
 
 	@Override
 	public int getKodeKelurahan(String kode_kelurahan) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sidukMapper.getKodeKelurahan(kode_kelurahan);
 	}
 }

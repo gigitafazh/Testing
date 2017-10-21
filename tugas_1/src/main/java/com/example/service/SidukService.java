@@ -9,7 +9,9 @@ import com.example.model.KotaModel;
 import com.example.model.PendudukModel;
 
 public interface SidukService {
-	// penduduk service
+	/************************** 
+	 * Service View Penduduk  *
+	 **************************/
 	// view penduduk
 	PendudukModel selectPenduduk(String nik);
 
@@ -24,42 +26,77 @@ public interface SidukService {
 
 	// select view penduduk get data di keluarga, kelurahan, kecamatan
 	KotaModel selectKotaById(int id_kota);
-	
+
 	// select nik untuk di cek
 	String getCekNIK(String ceknik);
 	
+	/**************************
+	 *  Service Add Penduduk  *
+	 **************************/
 	// add penduduk
 	void addPenduduk(PendudukModel penduduk);
-
+	
+	// Service Update Penduduk
 	// update penduduk
-	//void updatePenduduk(PendudukModel penduduk, int id);
 	void updatePenduduk(PendudukModel penduduk);
 	
-	// keluarga service
+	/************************************
+	 *  Service Update Status Kematian  * 
+	 ************************************/
+	// update status kematian penduduk
+	void updatePendudukStatus(String nik);
+
+	// update status berlaku penduduk
+	void updateStatusBerlaku(int id_keluarga);
+
+	/***************************
+	 *  Service View Keluarga  * 
+	 ***************************/
 	// view keluarga
 	KeluargaModel selectKeluarga(String nomor_kk);
 
 	// select view anggota keluarga penduduk di keluarga
 	List<PendudukModel> selectPendudukById(int id_keluarga);
-	
+
 	// select kode by nama
 	KelurahanModel getNamaKelurahan(String nama_kelurahan);
-	KecamatanModel getNamaKecamatan(String nama_kecamatan);
-	KotaModel getNamaKota(String nama_kota);
 	
+	// select kode by nama
+	KecamatanModel getNamaKecamatan(String nama_kecamatan);
+	
+	// select kode by nama
+	KotaModel getNamaKota(String nama_kota);
+
 	// select nkk untuk di cek
 	String getCekNKK(String nkkbaru);
-	
+
 	// select kode kelurahan untuk set id kelurahan
 	int getKodeKelurahan(String kode_kelurahan);
 	
+	/**************************
+	 *  Service Add Keluarga  *
+	 **************************/
 	// add keluarga
 	void addKeluarga(KeluargaModel keluarga);
 	
+	/*****************************
+	 *  Service Update Keluarga  *
+	 *****************************/
 	// update keluarga
 	void updateKeluarga(KeluargaModel keluarga);
-
 	
-
+	/***************************
+	 *  Service Find Keluarga  *
+	 ***************************/
+	// select list kota
+	List<KotaModel> selectListKota();
 	
+	// select list kecamatan 
+	List<KecamatanModel> selectListKecamatan(String nama_kota);
+	
+	// select list kelurahan
+	List<KelurahanModel> selectListKelurahan(String nama_kecamatan);
+	
+	// select list penduduk berdasarkan id kelurahan
+	List<PendudukModel> selectPendudukByIdKelurahan(int id_kelurahan);
 }

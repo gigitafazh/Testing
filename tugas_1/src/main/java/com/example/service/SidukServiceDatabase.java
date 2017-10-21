@@ -131,4 +131,40 @@ public class SidukServiceDatabase implements SidukService {
 	public int getKodeKelurahan(String kode_kelurahan) {
 		return sidukMapper.getKodeKelurahan(kode_kelurahan);
 	}
+	
+	// method update status kematian penduduk
+	@Override
+	public void updatePendudukStatus(String nik) {
+		sidukMapper.updatePendudukStatus(nik);
+	}
+	
+	// method update status berlaku penduduk
+	@Override
+	public void updateStatusBerlaku(int id_keluarga) {
+		sidukMapper.updateStatusBerlaku(id_keluarga);
+	}
+	
+	// method select list kota
+	@Override
+	public List<KotaModel> selectListKota() {
+		return sidukMapper.selectListKota();
+	}
+	
+	// method select list kecamatan by kota
+	@Override
+	public List<KecamatanModel> selectListKecamatan(String nama_kota) {
+		return sidukMapper.selectListKecamatan(nama_kota);
+	}
+	
+	// method select list kelurahan by kecamatan
+	@Override
+	public List<KelurahanModel> selectListKelurahan(String nama_kecamatan) {
+		return sidukMapper.selectListKelurahan(nama_kecamatan);
+	}
+	
+	// method select list penduduk by kelurahan
+	@Override
+	public List<PendudukModel> selectPendudukByIdKelurahan(int id_kelurahan) {
+		return sidukMapper.selectPendudukByIdKelurahan(id_kelurahan);
+	}
 }

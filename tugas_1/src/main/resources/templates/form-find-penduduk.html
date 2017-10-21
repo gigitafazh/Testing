@@ -47,27 +47,27 @@
 				<h3>Cari Penduduk</h3>
 				<form class="form-group" action="/penduduk/find" method="GET" style="width:60%">
 					<div th:if="${view} == null" class="row" style="margin-left:5px">
-						<h4 for="kode_kota" >Lihat data penduduk berdasarkan kota</h4>
-						<select class="form-control" name="kota" required ="true" >
+						<h4 for="kode_kota">Lihat data penduduk berdasarkan kota</h4>
+						<select class="form-control" name="nama_kota" required ="true" >
 							<option th:if="${nama_kota} != null" readonly="true" th:value="${nama_kota}" th:text="${nama_kota}"></option> 
 							<option th:if="${nama_kota} == null" selected="true" disabled="disabled"></option> 
-					        <option th:if="${nama_kota} == null" th:each="kota,iterationStatus:${kota_list}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}">Kota</option>
+					        <option th:if="${nama_kota} == null" th:each="kota,iterationStatus:${listkota}" th:value="${kota.nama_kota}" th:text="${kota.nama_kota}">Kota</option>
 					    </select>
 					</div>
 					<div th:if="${nama_kota} != null" class="row" style="margin-left:5px">
 						<h4 for="kode_kecamatan" >Lihat data penduduk berdasarkan kecamatan</h4>
-						<select class="form-control" name="kecamatan">
+						<select class="form-control" name="nama_kecamatan">
 							<option th:if="${nama_kecamatan} != null" th:value="${nama_kecamatan}" readonly="true" th:text="${nama_kecamatan}"></option> 
 							<option th:if="${nama_kecamatan} == null" selected="true" disabled="disabled"></option> 
-					        <option th:if="${nama_kecamatan} == null" th:each="kecamatan,iterationStatus:${kecamatan_list}" th:value="${kecamatan.nama_kecamatan}" th:text="${kecamatan.nama_kecamatan}">Kecamatan</option>
+					        <option th:if="${nama_kecamatan} == null" th:each="kecamatan,iterationStatus:${listkecamatan}" th:value="${kecamatan.nama_kecamatan}" th:text="${kecamatan.nama_kecamatan}">Kecamatan</option>
 					    </select>
 					</div>
 					<div th:if="${nama_kecamatan} != null" class="row" style="margin-left:5px">
 						<h4 for="kode_kecamatan" >Lihat data penduduk berdasarkan kelurahan</h4>
-						<select class="form-control" name="kelurahan">
+						<select class="form-control" name="nama_kelurahan">
 							<option th:if="${nama_kelurahan} != null" th:value="${nama_kelurahan}" readonly="true" th:text="${nama_kelurahan}"></option> 
 							<option th:if="${nama_kelurahan} == null" selected="true" disabled="disabled"></option>
-					        <option th:if="${nama_kelurahan} == null" th:each="kelurahan,iterationStatus: ${kelurahan_list}" th:value="${kelurahan.nama_kelurahan}" th:text="${kelurahan.nama_kelurahan}">Kelurahan</option>
+					        <option th:if="${nama_kelurahan} == null" th:each="kelurahan,iterationStatus: ${listkelurahan}" th:value="${kelurahan.nama_kelurahan}" th:text="${kelurahan.nama_kelurahan}">Kelurahan</option>
 					    </select>
 					</div>
 					<div>
@@ -87,7 +87,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="penduduk,iterationStatus:${penduduk_list}">
+							<tr th:each="penduduk,iterationStatus:${listpenduduk}">
 								<td style="width:5%" th:text="${iterationStatus.count}"> 1 </td>
 								<td th:text="${penduduk.nama}"></td>
 								<td th:text="${penduduk.nik}"></td>

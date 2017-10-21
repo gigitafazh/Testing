@@ -45,27 +45,10 @@
 				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
 				<hr/>
 				
-				<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
-				<h6>Masukkan Nomor Induk Kependudukan</h6>
-				<form class="form-group" action="/penduduk/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nik" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px;  margin-left:10px" type="submit">Lihat</button>
-					</div>
-				</form>
-				<hr/>
-					
-				<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
-				<h6>Masukkan Nomor Kartu Keluarga</h6>
-				<form class="form-group" action="/keluarga/view" method="GET">
-					<div class="row">
-						<input class="form-control col-sm-4" style="margin-left:25px; width:60%" type="text" name="nomor_kk" required = "true"/>
-					</div>
-					<div>
-						<button class="btn-primary" style="margin-top:10px; margin-left:10px" type="submit">Lihat</button>
-					</div>
+				<h3 th:text="'Ubah Status Kematian Penduduk - ' + ${nik}"></h3>
+				<form action="/penduduk/status/submit" method="post">
+					  <input type="hidden" name="nik" th:value="${nik}"></input>
+					  <input type="submit" value="Submit" class="btn btn-primary"></input>
 				</form>
 			</div>
 			<div class="col-md-2">

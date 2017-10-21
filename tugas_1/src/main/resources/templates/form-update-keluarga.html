@@ -75,11 +75,25 @@
 									th:field="*{RW}" required="true"></input></td>
 							</tr>
 							<tr>
-								<td class="col-sm-2"><label for="id_kelurahan">Id Kelurahan</label></td>
+								<td class="col-sm-2"><label for="kelurahan">Kelurahan/Desa</label></td>
 								<td class="col-sm-4"><input class="form-control"
-									type="text" name="id_kelurahan"
-									th:value="${keluarga.id_kelurahan}"
-									th:field="*{id_kelurahan}" required="true"></input></td>
+									type="text" name="nama_kelurahan"
+									th:value="${keluarga.nama_kelurahan}"
+									th:field="*{nama_kelurahan}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="kecamatan">Kecamatan</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="nama_kecamatan"
+									th:value="${keluarga.nama_kecamatan}"
+									th:field="*{nama_kecamatan}" required="true"></input></td>
+							</tr>
+							<tr>
+								<td class="col-sm-2"><label for="kota">Kota</label></td>
+								<td class="col-sm-4"><input class="form-control"
+									type="text" name="nama_kota"
+									th:value="${keluarga.nama_kota}"
+									th:field="*{nama_kota}" required="true"></input></td>
 							</tr>
 							<tr>
 								<td class="col-sm-2"></td>

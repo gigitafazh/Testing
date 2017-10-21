@@ -6,13 +6,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width" />
 	<title>Cari Penduduk</title>
-	<!-- <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
-	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#result').DataTable();
+		});
+	</script>
 </head>
 
 
@@ -76,7 +82,7 @@
 				</form>
 				
 				<div th:if="${view} != null" class="row" style="margin-top:30px; margin-left:5px">
-					<h4 th:text="'Lihat data penduduk di Kota ' + ${nama_kota} +  ' Kecamatan ' + ${nama_kecamatan} + ' Kelurahan ' + ${nama_kelurahan}"></h4>
+					<h4 th:text="'Lihat data penduduk di ' + ${nama_kota} +  ' KECAMATAN ' + ${nama_kecamatan} + ' KELURAHAN ' + ${nama_kelurahan}"></h4>
 					<table id="result" class="table table-bordered" style="width:100%; text-align:center">
 						<thead>
 							<tr>

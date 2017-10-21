@@ -127,7 +127,9 @@
 							<td></td>
 							<td><a href="#" class="btn btn-danger">Nonaktifkan</a> <a
 								th:href="'/penduduk/update/' + ${penduduk.nik}"
-								class="btn btn-primary"> Update Data </a></td>
+								class="btn btn-primary"> Update Data </a> <a
+								th:href="'/penduduk/status/{nik}' + ${penduduk.nik}"
+								class="btn btn-success"> Update Data </a></td>
 						</tr>
 					</tbody>
 				</table>

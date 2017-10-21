@@ -45,8 +45,10 @@
 				<h5>Selamat datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h5>
 				<hr/>
 				
-				<h4>Not Found!</h4>
-				<h5 th:text="'Data penduduk tidak ada!'">Data penduduk tidak ada!</h5>
+				<h3>Not Found!</h3>
+	       		<h5 th:text="${nik} != null ?'Data penduduk dengan NIK: '  + ${nik} +' tidak ditemukan'">Data penduduk dengan nik tersebut tidak ditemukan</h5>
+	       		<h5 th:text="${nomor_kk} != null ? 'Data Keluarga dengan nkk: ' + ${nkk} + ' tidak ditemukan'">Data keluarga dengan nkk tersebut tidak ditemukan</h5>
+	       		<h5 th:text="${alamat} != null ? 'Alamat: ' + ${nkk} + ' tidak ditemukan'">Alamat tersebut tidak ditemukan</h5>
 			</div>
 			<div class="col-md-2">
 			</div>

@@ -20,7 +20,6 @@ public class SidukServiceDatabase implements SidukService {
 	@Autowired
 	private SidukMapper sidukMapper;
 
-	// penduduk service database
 	// method view penduduk
 	@Override
 	public PendudukModel selectPenduduk(String nik) {
@@ -66,18 +65,12 @@ public class SidukServiceDatabase implements SidukService {
 	public void addPenduduk(PendudukModel penduduk) {
 		sidukMapper.addPenduduk(penduduk);
 	}
-
+	
 	// method update penduduk
-	// @Override
-	// public void updatePenduduk(PendudukModel penduduk, int id) {
-	// log.info("update penduduk with id {}", id);
-	// sidukMapper.updatePenduduk(penduduk, id);
-	// }
 	public void updatePenduduk(PendudukModel penduduk) {
 		sidukMapper.updatePenduduk(penduduk);
 	}
 
-	// keluarga service database
 	// method view keluarga
 	@Override
 	public KeluargaModel selectKeluarga(String nomor_kk) {
@@ -121,12 +114,14 @@ public class SidukServiceDatabase implements SidukService {
 	public KotaModel getNamaKota(String nama_kota) {
 		return sidukMapper.getNamaKota(nama_kota);
 	}
-
+	
+	// method select nkk untuk di cek
 	@Override
 	public String getCekNKK(String ceknkk) {
 		return sidukMapper.getCekNKK(ceknkk);
 	}
-
+	
+	// method get kode kelurahan
 	@Override
 	public int getKodeKelurahan(String kode_kelurahan) {
 		return sidukMapper.getKodeKelurahan(kode_kelurahan);

@@ -17,7 +17,9 @@ import com.example.model.KotaModel;
 
 @Mapper
 public interface SidukMapper {
-	// Mapper View Penduduk
+	/*************************
+	 *  Mapper View Penduduk *
+	 *************************/
 	// select view penduduk
 	@Select("select * from penduduk where nik = #{nik}")
 	PendudukModel selectPenduduk(String nik);
@@ -38,7 +40,9 @@ public interface SidukMapper {
 	@Select("select * from kota where id = #{id_kota}")
 	KotaModel selectKotaById(int id_kota);
 	
-	// Mapper Add Penduduk
+	/***********************
+	 * Mapper Add Penduduk *
+	 ***********************/
 	// select nik untuk di cek
 	@Select("select max(nik) from penduduk WHERE nik like concat(#{ceknik},'%')")
 	String getCekNIK(String ceknik);
@@ -51,7 +55,9 @@ public interface SidukMapper {
 			+ "'${status_dalam_keluarga}', '${golongan_darah}', ${is_wafat})")
 	void addPenduduk(PendudukModel penduduk);
 	
-	// Mapper Update Penduduk
+	/***********************
+	 * Mapper Update Penduduk *
+	 ***********************/
 	// update penduduk
 	@Update("update penduduk set nik = #{nik}, nama = #{nama}, tempat_lahir = #{tempat_lahir},"
 			+ "tanggal_lahir = #{tanggal_lahir}, jenis_kelamin = #{jenis_kelamin}, is_wni = #{is_wni},"
@@ -60,7 +66,9 @@ public interface SidukMapper {
 			+ "golongan_darah = #{golongan_darah}, is_wafat = #{is_wafat} where nik = #{nik}")
 	void updatePenduduk(PendudukModel penduduk);
 
-	// Mapper View Keluarga
+	/**************************
+	 *  Mapper View Keluarga  *
+	 **************************/
 	// select view keluarga
 	@Select("select * from keluarga where nomor_kk = #{nomor_kk}")
 	KeluargaModel selectKeluarga(String nomor_kk);
@@ -69,7 +77,9 @@ public interface SidukMapper {
 	@Select("select * from penduduk where id_keluarga = #{id}")
 	List<PendudukModel> selectPendudukById(int id_keluarga);
 	
-	// Mapper Add Keluarga
+	/***********************
+	 * Mapper Add Keluarga *
+	 ***********************/
 	// select kode kelurahan
 	@Select("select kode_kelurahan from kelurahan where nama_kelurahan=#{nama_kelurahan}")
 	KelurahanModel getNamaKelurahan(@Param("nama_kelurahan") String nama_kelurahan);
@@ -95,14 +105,18 @@ public interface SidukMapper {
 			+ "('${nomor_kk}', '${alamat}', '${RT}', '${RW}', ${id_kelurahan}, ${is_tidak_berlaku})")
 	void addKeluarga(KeluargaModel keluarga);
 	
-	// Mapper Update Keluarga
+	/**************************
+	 * Mapper Update Keluarga *
+	 **************************/
 	// update keluarga
 	@Update("update keluarga set nomor_kk = #{nomor_kk}, alamat = #{alamat},"
 			+ "RT = #{RT}, RW = #{RW}, id_kelurahan = #{id_kelurahan},"
 			+ "is_tidak_berlaku = #{is_tidak_berlaku} where nomor_kk = #{nomor_kk}")
 	void updateKeluarga(KeluargaModel keluarga);
 	
-	// Mapper Update Status Kematian
+	/**********************************
+	 *  Mapper Update Status Kematian *
+	 **********************************/
 	// update status kematian penduduk
 	@Update("update penduduk set  is_wafat = 1 where nik = #{nik}")
 	void updatePendudukStatus(String nik);
@@ -111,7 +125,9 @@ public interface SidukMapper {
 	@Update("update keluarga set is_tidak_berlaku = 1 where id = #{id}")
 	void updateStatusBerlaku(int id_keluarga);
 
-	// Mapper Cari Penduduk
+	/*************************
+	 *  Mapper Cari Penduduk *
+	 *************************/
 	// select list kota
 	@Select("select * from kota")
 	List<KotaModel> selectListKota();
